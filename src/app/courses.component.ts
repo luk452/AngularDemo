@@ -19,7 +19,7 @@ import { Component } from '@angular/core';
         <hr />
         <p>Type, press ENTER and look into console...</p>
         <input (keyup.enter)="onKeyUp($event)" />
-        <input placeholder="e-mail" #email (keyup.enter)="OnEnterEmail(email.value)" />
+        <input [(ngModel)]="email" (keyup.enter)="OnEnterEmail()" />
     `
 })
 
@@ -28,6 +28,7 @@ export class CoursesComponent {
     imageUrl = "http://lorempixel.com/g/400/100";
     isActive = false;
     courses;
+    email = "me@example.com"
 
     // dependency in constructor
     constructor(service: CoursesService) {
@@ -48,7 +49,7 @@ export class CoursesComponent {
         console.log("You entered: ", $event.target.value);
     }
 
-    OnEnterEmail(email) {
-        console.log("You entered: ", email);
+    OnEnterEmail() {
+        console.log("You entered: ", this.email);
     }
 }
