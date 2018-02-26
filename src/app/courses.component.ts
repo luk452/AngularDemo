@@ -13,13 +13,14 @@ import { Component } from '@angular/core';
             </li>
         </ul>
         <button class="btn btn-primary" [class.active]="isActive">Save</button>
+        <button [style.backgroundColor]="isActive ? 'blue' : 'white'">Load</button>
     `
 })
 
 export class CoursesComponent {
     title = "List of courses";
     imageUrl = "http://lorempixel.com/g/400/100";
-    isActive = true;
+    isActive = false;
     courses;
 
     // dependency in constructor
