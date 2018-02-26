@@ -1,3 +1,4 @@
+import { CoursesService } from './courses.service';
 // import component decorater
 import { Component } from '@angular/core';
 
@@ -15,5 +16,11 @@ import { Component } from '@angular/core';
 
 export class CoursesComponent {
     title = "List of courses";
-    courses = ["course 1", "course 2", "course 3"];
+    courses;
+
+    // dependency in constructor
+    constructor(service: CoursesService) {
+        //let service = new CoursesService();
+        this.courses = service.getCourses();
+    }
 }
