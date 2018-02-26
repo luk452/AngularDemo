@@ -12,8 +12,10 @@ import { Component } from '@angular/core';
                 {{ course }}
             </li>
         </ul>
-        <button class="btn btn-primary" [class.active]="isActive">Save</button>
-        <button [style.backgroundColor]="isActive ? 'blue' : 'white'">Load</button>
+        <div (click)="onDivClick()">
+            <button class="btn btn-primary" [class.active]="isActive" (click)="onSave($event)">Save</button>
+            <button [style.backgroundColor]="isActive ? 'blue' : 'white'">Load</button>
+        </div>
     `
 })
 
@@ -27,5 +29,14 @@ export class CoursesComponent {
     constructor(service: CoursesService) {
         //let service = new CoursesService();
         this.courses = service.getCourses();
+    }
+
+    onSave($event) {
+        $event.stopPropagation(); // stops bubbling, so it disables event handling for higher objects in DOM
+        console.log("Button was clicked!", $event);
+    }
+
+    onDivClick() {
+        console.log("DIV clicked!");
     }
 }
