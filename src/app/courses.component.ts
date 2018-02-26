@@ -16,6 +16,10 @@ import { Component } from '@angular/core';
             <button class="btn btn-primary" [class.active]="isActive" (click)="onSave($event)">Save</button>
             <button [style.backgroundColor]="isActive ? 'blue' : 'white'">Load</button>
         </div>
+        <hr />
+        <p>Type, press ENTER and look into console...</p>
+        <input (keyup.enter)="onKeyUp($event)" />
+        <input placeholder="e-mail" #email (keyup.enter)="OnEnterEmail(email.value)" />
     `
 })
 
@@ -38,5 +42,13 @@ export class CoursesComponent {
 
     onDivClick() {
         console.log("DIV clicked!");
+    }
+
+    onKeyUp($event) {
+        console.log("You entered: ", $event.target.value);
+    }
+
+    OnEnterEmail(email) {
+        console.log("You entered: ", email);
     }
 }
