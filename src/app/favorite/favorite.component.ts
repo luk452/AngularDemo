@@ -19,7 +19,11 @@ export class FavoriteComponent implements OnInit {
   onStarClick () {
     this.state = !this.state;
     console.log("Start clicked", this.state);
-    this.change.emit();
+    this.change.emit({ newValue: this.state });
   }
 
+}
+
+export interface FavoriteChangedEventArgs {
+  newValue: boolean;
 }
