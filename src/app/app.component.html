@@ -4,7 +4,7 @@
 <br>
 {{ inputText | titleCase}}
 
-<favorite></favorite>
+<favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChanged()"></favorite>
 
 <courses></courses>
 <authors></authors>
