@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">FAV</h5>
+        <div class="card-text">
+            <button class="btn"
+            [class.btn-success]="state"
+            [class.btn-danger]="!state"
+            (click)="onStarClick()"
+          >FAV</button>
+        </div>
+     </div>
+</div>
