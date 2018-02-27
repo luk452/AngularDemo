@@ -1,15 +1,16 @@
-import { Component, OnInit, Input, Output , EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output , EventEmitter, ViewEncapsulation} from '@angular/core';
 
 
 @Component({
   selector: 'favorite',
   templateUrl: './favorite.component.html',
-  styleUrls: ['./favorite.component.css']
+  styleUrls: ['./favorite.component.css'],
+  encapsulation: ViewEncapsulation.Emulated //emulates the behaviour of Shadow DOM = default
 })
 export class FavoriteComponent implements OnInit {
 
   @Input('isFavorite') state: boolean;
-  @Output() change = new EventEmitter();
+  @Output('change') change = new EventEmitter();
   
   constructor() { }
 
