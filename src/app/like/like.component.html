@@ -7,13 +7,12 @@
 <span>{{ likesCount }}</span>
 <br>
 
-<div *ngIf="isLiked; then likedTemplate else notLikedTemplate"></div>
-<ng-template #likedTemplate>
+<span [hidden]="!isLiked" (click)="onClick()">
   <span class="fas fa-heart heart-icon highlighted"></span>
-</ng-template>
-<ng-template #notLikedTemplate>
+</span>
+<span [hidden]="isLiked" (click)="onClick()">
   <span class="fas fa-heart heart-icon"></span>
-</ng-template>
+</span>
 
-<span> - it doesn't work with FontAwesome!</span>
+<span> - now it works!</span>
 <hr>
