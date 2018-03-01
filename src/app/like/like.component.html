@@ -1,0 +1,15 @@
+<button class="btn"
+  [class.btn-primary]="isLiked"
+  [class.btn-warning]="!isLiked"
+  (click)="onClick()"
+>Like!</button>
+
+<span>{{ likesCount }}</span>
+<br>
+<span class="fas fa-heart heart-icon"
+  [class.highlighted]="isLiked"
+  (click)="onClick()"
+>
+</span>
+<span> - it doesn't work with FontAwesome!</span>
+<hr>

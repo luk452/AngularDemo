@@ -6,10 +6,17 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   post = {
     title: "Title",
     isFavorite: true
+  }
+
+  tweet = {
+    body: 'post text',
+    isLiked: true,
+    likesCount: 10
   }
 
   onFavoriteChanged(eventArgs: FavoriteChangedEventArgs) {

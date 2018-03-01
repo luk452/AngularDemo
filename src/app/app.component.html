@@ -1,5 +1,11 @@
 <h1>Angular</h1>
 
+<like
+    [likesCount]="tweet.likesCount"
+    [isActive]="tweet.isLiked"
+    >
+</like>
+
 <app-panel>
     <ng-container class="header">Heading</ng-container>
     <ng-container class="body">
