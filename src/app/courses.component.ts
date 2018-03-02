@@ -44,7 +44,7 @@ export class CoursesComponent {
     }
     
     title = "List of courses";
-    imageUrl = "http://lorempixel.com/g/400/100";
+    imageUrl = "";
     isActive = false;
     courses;
     email = "me@example.com"

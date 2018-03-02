@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
+  viewMode = 'map';
+  
   post = {
     title: "Title",
     isFavorite: true
