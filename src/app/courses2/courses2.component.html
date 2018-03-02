@@ -1,0 +1,11 @@
+<button class="btn btn-outline-primary btn-sm" (click)="onAdd()">Add</button>
+<button class="btn btn-outline-secondary btn-sm" (click)="loadCourses()">Load courses</button>
+<ul>
+  <li *ngFor = "let course of courses; index as i; even as isEven; trackBy: trackCourse">
+    {{ i }} - {{ course.name }} - <span *ngIf="isEven">(EVEN)</span>
+    <button class="btn btn-outline-danger btn-sm" (click)="onRemove(course)">Remove</button>
+    <button class="btn btn-outline-warning btn-sm" (click)="onChange(course)">Update</button>
+  </li>
+</ul>
+
+<hr>
