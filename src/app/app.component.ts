@@ -10,6 +10,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   viewMode = 'map';
   canSave = false;
+
+  task = {
+    id: 1,
+    assignee: null
+  }
   
   post = {
     title: "Title",
