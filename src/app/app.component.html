@@ -1,3 +1,9 @@
+<!-- <input type="text" appInputFormat [format]="'uppercase'"> -->
+<!-- As we have only 1 input we can simplify it: -->
+
+<input type="text" [appInputFormat]="'uppercase'">
+
+<hr>
 <p>
   <!-- Save Traversal Operator - assignee object in null so it's ignored -->
   {{ task.assignee?.name }} 
