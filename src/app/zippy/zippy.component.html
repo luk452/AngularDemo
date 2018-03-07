@@ -1,0 +1,12 @@
+<div class="card bg-light mb-3" style="max-width: 20rem;">
+  <div class="card-header container">
+    <div class="row" (click)="toggle()" style="cursor: pointer;">
+      <span>{{ title }}</span>
+      <span [hidden]="isExpanded" class="col text-right collapseButton"><i class="fas fa-angle-double-down"></i></span>
+      <span [hidden]="!isExpanded" class="col text-right collapseButton"><i class="fas fa-angle-double-up"></i></span>
+    </div>  
+  </div>
+  <div class="card-body" *ngIf="isExpanded">
+    <ng-content></ng-content>
+  </div>
+</div>
