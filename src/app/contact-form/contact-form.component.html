@@ -7,13 +7,13 @@
       <input 
         required 
         minlength="3" 
-        pattern="banana"
+        pattern="banana" 
         id="firstName" 
         type="text" 
         class="form-control" 
         ngModel 
         name="firstName" 
-        #varFN="ngModel" 
+        #varFN="ngModel"
         (change)="log(varFN)">
       <div 
         class="alert alert-danger" 
@@ -28,13 +28,41 @@
     </div>
     <div class="form-group">
       <label for="comment">Comment</label>
-      <textarea
-        ngModel
+      <textarea 
+        ngModel 
         name="comment" 
         id="comment" 
         cols="30" rows="10" 
         class="form-control"></textarea>
     </div>
-    <button class="btn btn-primary">Submit</button>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" ngModel name="isSubscribed"> Subscribe
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="contactMethod">Contact Method</label>
+      <select ngModel name="contactMethod" id="contactMethod" class="form-control">
+        <option value=""></option>
+        <option *ngFor="let m of contactMethods" [value]="m.id">{{ m.name }}</option>
+        <!-- Use this to bind whole object: -->
+        <!-- <option *ngFor="let m of contactMethods" [ngValue]="m">{{ m.name }}</option> -->
+      </select>
+    </div>
+
+    <div *ngFor="let m of contactMethods" class="radio">
+      <label>
+        <input ngModel type="radio" name="contactMethod2" [value]="m.id"> {{ m.name }}
+      </label>
+    </div>
+
+    <hr>
+    <pre><b>ngForm: f.value = </b>{{ f.value | json }}</pre>
+    <pre><b>ngModelGroup: contact.value = </b>{{ contact.value | json }}</pre>
+    <hr>
+
+    <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
   </div>
 </form>
