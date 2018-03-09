@@ -1,0 +1,28 @@
+<form #f="ngForm" (ngSubmit)="submit(f.value)">
+  <div class="form-group">
+    <label for="name">Course name</label>
+    <input required minlength="3" ngModel name="name" #name="ngModel" type="text" id="name" class="form-control">
+    <span *ngIf="name.touched && name.errors?.required" class="badge badge-pill badge-warning" (click)="log(name)">Name is required</span>
+    <span *ngIf="name.errors?.minlength" class="badge badge-pill badge-warning" (click)="log(name)">Name should have at least {{ name.errors.minlength.requiredLength }} characters</span>
+  </div>
+
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select required ngModel name="category" #category="ngModel" id="category" class="form-control">
+      <option value=""></option>
+      <option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</option>
+    </select>
+    <span *ngIf="category.touched && category.invalid" class="badge badge-pill badge-warning">Category is required</span>
+  </div>
+
+  <div class="form-check">
+    <input ngModel name="defaultCheck" class="form-check-input" type="checkbox" value="" id="defaultCheck">
+    <label class="form-check-label" for="defaultCheck">
+      Default checkbox
+    </label>
+  </div>
+
+  <code>{{ f.value | json }}</code><br>
+
+  <button class="btn btn-primary" [disabled]="f.invalid">Create</button>
+</form>
