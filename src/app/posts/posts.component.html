@@ -7,6 +7,7 @@
 <ul class="list-group">
   <li *ngFor = "let p of posts" class="list-group-item">
     <button (click)="updatePost(p)" class="btn btn-secondary btn-sm">Update</button>
+    <button (click)="deletePost(p)" class="btn btn-danger btn-sm">Delete</button>
     {{ p.title }}
   </li>
 </ul>
