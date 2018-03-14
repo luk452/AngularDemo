@@ -1,6 +1,7 @@
 import { SummaryPipe } from './summary.pipe';
-import { AuthorsService } from './authors.service';
-import { CoursesService } from './courses.service';
+import { AuthorsService } from './services/authors.service';
+import { CoursesService } from './services/courses.service';
+import { PostService } from './services/post.service';
 import { CoursesComponent } from './courses.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -47,7 +48,8 @@ import { PostsComponent } from './posts/posts.component';
   ],
   providers: [
     CoursesService,
-    AuthorsService
+    AuthorsService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })
