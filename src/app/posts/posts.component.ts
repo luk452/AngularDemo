@@ -61,7 +61,7 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(input: HTMLInputElement) {
-    this.service.deletePost(input.id).subscribe(
+    this.service.deletePost(input.id+1000).subscribe(
       response => {
         let index = this.posts.indexOf(input);
         this.posts.splice(index, 1);

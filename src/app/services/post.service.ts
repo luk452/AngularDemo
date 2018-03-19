@@ -1,11 +1,12 @@
 import { BadInput } from './../common/bad-input';
 import { NotFoundError } from './../common/not-found-error';
+import { AppError } from "../common/app-error";
+
 import { Http } from "@angular/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs/observable";
+import { Observable } from "rxjs/Observable"; // it must be "rxjs/Observable" with capital "O"!!!
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import { AppError } from "../common/app-error";
 
 @Injectable()
 export class PostService {
@@ -15,27 +16,20 @@ export class PostService {
   constructor(private http: Http) {}
 
   getPosts() {
-    return this.http.get(this.url);
+    return this.http.get(this.url)
+      .catch(this.handleError);
   }
 
   createPost(postObj) {
     return this.http.post(this.url, JSON.stringify(postObj))
-      .catch((error: Response) => {
-        if (error.status === 400)
-          return Observable.throw(new BadInput(error.json()));
-        
-          return Observable.throw(new AppError(error.json()));
-      });
+      .catch(this.handleError);
   }
 
   updatePost(postObj) {
     // this.http.patch - update only a few properties
     // this.http.put - send whole object
     return this.http.patch(this.url + "/" + postObj.id, JSON.stringify({ isRead: true }))
-      .catch((error: Response) => {
-        return Observable.throw(new AppError());
-      
-      });
+      .catch(this.handleError);
     //this.http.put(this.url, JSON.stringify(input));
   }
 
@@ -43,11 +37,16 @@ export class PostService {
     // in case of error service returns custom error object instead of error code - it translates it to language unterstandable by a component.
     // goto codewithmosh.com: "13-Throwing Application-specific Errors" for details
     return this.http.delete(this.url + "/" + id)
-      .catch((error: Response) => {
-        if (error.status === 404)
-          return Observable.throw(new NotFoundError());
-        
-        return Observable.throw(new AppError(error));
-      });
+      .catch(this.handleError);
+  }
+
+  private handleError(error: Response) {
+    if (error.status === 404)
+      return Observable.throw(new NotFoundError());
+
+    if (error.status === 400)
+      return Observable.throw(new BadInput(error.json()));
+    
+    return Observable.throw(new AppError(error));
   }
 }
