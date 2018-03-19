@@ -1,5 +1,8 @@
+import { BadInput } from './../common/bad-input';
+import { AppError } from './../common/app-error';
 import { PostService } from "./../services/post.service";
 import { Component, OnInit } from "@angular/core";
+import { NotFoundError } from '../common/not-found-error';
 
 @Component({
   selector: "posts",
@@ -17,11 +20,13 @@ export class PostsComponent implements OnInit {
     observableResponse.subscribe(
       response => {
         this.posts = response.json();
-      },
-      error => {
-        alert("An unexpected error occurred.");
-        console.log(error);
       }
+      // we don't need this because we provided general AppErrorHandler
+      // ,
+      // error => {
+      //   alert("An unexpected error occurred.");
+      //   console.log(error);
+      // }
     );
   }
 
@@ -38,12 +43,11 @@ export class PostsComponent implements OnInit {
         this.posts.splice(0, 0, postObj);
         console.log(response.json());
       },
-      (error: Response) => {
-        if (error.status === 400) {
-          // this.form.setErrors(error.json());
+      (error: AppError) => {
+        if (error instanceof BadInput) {
+          // this.form.setErrors(error.originalError);
         } else {
-          alert("An unexpected error occurred.");
-          console.log(error);
+          throw error;
         }
       }
     );
@@ -53,12 +57,7 @@ export class PostsComponent implements OnInit {
     this.service.updatePost(input).subscribe(
       response => {
         console.log(response.json());
-      },
-      error => {
-        alert("An unexpected error occurred.");
-        console.log(error);
-      }
-    );
+      });
   }
 
   deletePost(input: HTMLInputElement) {
@@ -67,11 +66,12 @@ export class PostsComponent implements OnInit {
         let index = this.posts.indexOf(input);
         this.posts.splice(index, 1);
       },
-      (error: Response) => {
-        if (error.status === 404) alert("This post has already been deleted.");
+      (error: AppError) => {
+        // It's not working !!! I don't know why.
+        if (error instanceof NotFoundError)
+          alert("This post has already been deleted.");
         else {
-          alert("An unexpected error occurred.");
-          console.log(error);
+          throw error; // it will be captured by global error handler
         }
       }
     );
