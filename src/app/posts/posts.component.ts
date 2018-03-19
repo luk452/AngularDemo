@@ -14,60 +14,51 @@ export class PostsComponent implements OnInit {
 
   constructor(private service: PostService) {}
   ngOnInit() {
-    // on of the lifecycle hooks
-    //http.get returns Observable<Response>. It means that it's async. Observable has method subscribe. Define subscription function.
-    let observableResponse = this.service.getAll(); // :Observable<Response>
-    observableResponse.subscribe(
-      response => {
-        this.posts = response.json();
-      }
-      // we don't need this because we provided general AppErrorHandler
-      // ,
-      // error => {
-      //   alert("An unexpected error occurred.");
-      //   console.log(error);
-      // }
-    );
+    // one of the lifecycle hooks
+    // http.get returns Observable<Response>. It means that it's async. Observable has method subscribe. Define subscription function.
+    this.service.getAll()
+      .subscribe(posts => this.posts = posts);
   }
 
   createPost(input: HTMLInputElement) {
-    let postObj = {
-      title: input.value
-    };
+    let postObj = { title: input.value };
+    this.posts.splice(0, 0, postObj); // optimistic update
+
     input.value = "";
 
-    let observableResponse = this.service.create(postObj);
-    observableResponse.subscribe(
-      response => {
-        postObj["id"] = response.json().id;
-        this.posts.splice(0, 0, postObj);
-        console.log(response.json());
-      },
-      (error: AppError) => {
-        if (error instanceof BadInput) {
-          // this.form.setErrors(error.originalError);
-        } else {
-          throw error;
+    this.service.create(postObj)
+      .subscribe(
+        newPost => {
+          postObj["id"] = newPost.id;
+          console.log(newPost);
+        },
+        (error: AppError) => {
+          this.posts.splice(0, 1); // delete if fail
+
+          if (error instanceof BadInput) {
+            // this.form.setErrors(error.originalError);
+          } else {
+            throw error;
+          }
         }
-      }
-    );
+      );
   }
 
   updatePost(input: HTMLInputElement) {
     this.service.update(input).subscribe(
-      response => {
-        console.log(response.json());
+      updatedPost => {
+        console.log(updatedPost);
       });
   }
 
   deletePost(input: HTMLInputElement) {
+    let index = this.posts.indexOf(input);
+    this.posts.splice(index, 1); // optimistic update
+    
     this.service.delete(input.id).subscribe(
-      response => {
-        let index = this.posts.indexOf(input);
-        this.posts.splice(index, 1);
-      },
+      null,
       (error: AppError) => {
-        // It's not working !!! I don't know why.
+        this.posts.splice(index, 0, input); // rollback of optimistic update
         if (error instanceof NotFoundError)
           alert("This post has already been deleted.");
         else {
