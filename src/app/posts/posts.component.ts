@@ -16,7 +16,7 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     // on of the lifecycle hooks
     //http.get returns Observable<Response>. It means that it's async. Observable has method subscribe. Define subscription function.
-    let observableResponse = this.service.getPosts(); // :Observable<Response>
+    let observableResponse = this.service.getAll(); // :Observable<Response>
     observableResponse.subscribe(
       response => {
         this.posts = response.json();
@@ -36,7 +36,7 @@ export class PostsComponent implements OnInit {
     };
     input.value = "";
 
-    let observableResponse = this.service.createPost(postObj);
+    let observableResponse = this.service.create(postObj);
     observableResponse.subscribe(
       response => {
         postObj["id"] = response.json().id;
@@ -54,14 +54,14 @@ export class PostsComponent implements OnInit {
   }
 
   updatePost(input: HTMLInputElement) {
-    this.service.updatePost(input).subscribe(
+    this.service.update(input).subscribe(
       response => {
         console.log(response.json());
       });
   }
 
   deletePost(input: HTMLInputElement) {
-    this.service.deletePost(input.id+1000).subscribe(
+    this.service.delete(input.id).subscribe(
       response => {
         let index = this.posts.indexOf(input);
         this.posts.splice(index, 1);
