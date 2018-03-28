@@ -7,6 +7,7 @@
             id="username" 
             type="text" 
             class="form-control">
+        <div *ngIf="username.pending">Checking...</div>
         <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
             <!-- it should be <div *ngIf="username.errors.required">Username is required.</div> but ng-language-service extension spot it as an error, so above it's a workaround -->
             <div *ngIf="username.errors['required']">Username is required.</div>
