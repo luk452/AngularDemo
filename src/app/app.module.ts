@@ -1,3 +1,4 @@
+import { SignupFormComponent } from './signup-form/signup-form.component';
 import { SummaryPipe } from './summary.pipe';
 import { AuthorsService } from './services/authors.service';
 import { CoursesService } from './services/courses.service';
@@ -40,7 +41,8 @@ import { AppErrorHandler } from './common/app-error-handler';
     ZippyComponent,
     ContactFormComponent,
     NewCourseFormComponent,
-    PostsComponent
+    PostsComponent,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,
