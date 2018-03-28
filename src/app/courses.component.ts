@@ -51,7 +51,7 @@ export class CoursesComponent {
 
     // dependency in constructor
     constructor(service: CoursesService) {
-        //let service = new CoursesService();
+        // let service = new CoursesService();
         this.courses = service.getCourses();
     }
 

@@ -5,7 +5,7 @@ import { Component, OnInit, Input, Output , EventEmitter, ViewEncapsulation} fro
   selector: 'favorite',
   templateUrl: './favorite.component.html',
   styleUrls: ['./favorite.component.css'],
-  encapsulation: ViewEncapsulation.Emulated //emulates the behaviour of Shadow DOM = default
+  encapsulation: ViewEncapsulation.Emulated // emulates the behaviour of Shadow DOM = default
 })
 export class FavoriteComponent implements OnInit {
 

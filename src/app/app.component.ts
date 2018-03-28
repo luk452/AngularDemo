@@ -11,6 +11,9 @@ export class AppComponent {
   viewMode = 'map';
   canSave = false;
 
+  title = 'Angular app';
+  inputText: string;
+
   task = {
     id: 1,
     assignee: null
@@ -31,6 +34,4 @@ export class AppComponent {
     console.log('fav changed', eventArgs);
   }
 
-  title = 'Angular app';
-  inputText: string;
 }
