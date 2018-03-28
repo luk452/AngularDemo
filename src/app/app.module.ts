@@ -5,7 +5,7 @@ import { CoursesService } from './services/courses.service';
 import { PostService } from './services/post.service';
 import { CoursesComponent } from './courses.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
@@ -47,7 +47,8 @@ import { AppErrorHandler } from './common/app-error-handler';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
   ],
   providers: [
     CoursesService,
