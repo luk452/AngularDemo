@@ -14,18 +14,18 @@ export class AppComponent {
   task = {
     id: 1,
     assignee: null
-  }
-  
+  };
+
   post = {
-    title: "Title",
+    title: 'Title',
     isFavorite: true
-  }
+  };
 
   tweet = {
     body: 'post text',
     isLiked: true,
     likesCount: 10
-  }
+  };
 
   onFavoriteChanged(eventArgs: FavoriteChangedEventArgs) {
     console.log('fav changed', eventArgs);

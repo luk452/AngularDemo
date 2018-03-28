@@ -1,13 +1,13 @@
 import { BadInput } from './../common/bad-input';
 import { AppError } from './../common/app-error';
-import { PostService } from "./../services/post.service";
-import { Component, OnInit } from "@angular/core";
+import { PostService } from './../services/post.service';
+import { Component, OnInit } from '@angular/core';
 import { NotFoundError } from '../common/not-found-error';
 
 @Component({
-  selector: "posts",
-  templateUrl: "./posts.component.html",
-  styleUrls: ["./posts.component.css"]
+  selector: 'posts',
+  templateUrl: './posts.component.html',
+  styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
   posts: any[];
@@ -21,15 +21,15 @@ export class PostsComponent implements OnInit {
   }
 
   createPost(input: HTMLInputElement) {
-    let postObj = { title: input.value };
+    const postObj = { title: input.value };
     this.posts.splice(0, 0, postObj); // optimistic update
 
-    input.value = "";
+    input.value = '';
 
     this.service.create(postObj)
       .subscribe(
         newPost => {
-          postObj["id"] = newPost.id;
+          postObj['id'] = newPost.id;
           console.log(newPost);
         },
         (error: AppError) => {
@@ -52,15 +52,15 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(input: HTMLInputElement) {
-    let index = this.posts.indexOf(input);
+    const index = this.posts.indexOf(input);
     this.posts.splice(index, 1); // optimistic update
-    
+
     this.service.delete(input.id).subscribe(
       null,
       (error: AppError) => {
         this.posts.splice(index, 0, input); // rollback of optimistic update
         if (error instanceof NotFoundError)
-          alert("This post has already been deleted.");
+          alert('This post has already been deleted.');
         else {
           throw error; // it will be captured by global error handler
         }

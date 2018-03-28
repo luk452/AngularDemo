@@ -6,7 +6,7 @@ export class AuthorsService {
   constructor() { }
 
   getAuthors() {
-    return ["Author A", "Author B", "Author C"];
+    return ['Author A', 'Author B', 'Author C'];
   }
 
 }

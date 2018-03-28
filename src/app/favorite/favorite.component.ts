@@ -11,7 +11,7 @@ export class FavoriteComponent implements OnInit {
 
   @Input('isFavorite') state: boolean;
   @Output('change') change = new EventEmitter();
-  
+
   constructor() { }
 
   ngOnInit() {
@@ -19,7 +19,7 @@ export class FavoriteComponent implements OnInit {
 
   onStarClick () {
     this.state = !this.state;
-    console.log("Start clicked", this.state);
+    console.log('Start clicked', this.state);
     this.change.emit({ newValue: this.state });
   }
 
