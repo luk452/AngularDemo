@@ -10,16 +10,28 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class SignupFormComponent {
   form = new FormGroup({
     username: new FormControl('', [
-      Validators.required, 
+      Validators.required,
       Validators.minLength(3),
       UsernameValidators.cannotContainSpace,
     ],
       UsernameValidators.shouldBeUnique),
-    
-    password: new FormControl('', 
-      Validators.required, 
+
+    password: new FormControl('',
+      Validators.required,
     )
   });
+
+  login() {
+    console.log(this.form);
+
+    // let isValid = authService.login(this.form.value)
+    const isValid = false; // simulate false
+    if (!isValid) {
+      this.form.setErrors({
+        invalidLogin: true
+      });
+    }
+  }
 
   get username() {
     return this.form.get('username');
