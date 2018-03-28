@@ -23,6 +23,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { PostsComponent } from './posts/posts.component';
 import { AppErrorHandler } from './common/app-error-handler';
+import { NewCourseForm2Component } from './new-course-form-2/new-course-form-2.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { AppErrorHandler } from './common/app-error-handler';
     ContactFormComponent,
     NewCourseFormComponent,
     PostsComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    NewCourseForm2Component
   ],
   imports: [
     BrowserModule,
