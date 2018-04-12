@@ -1,33 +1,37 @@
-<new-course-form-2></new-course-form-2>
-<hr>
+<change-password></change-password>
 
-<signup-form></signup-form>
-<hr>
+<!-- <new-course-form-2></new-course-form-2>
+<hr> -->
 
-<posts></posts>
-<hr>
+<!-- <signup-form></signup-form>
+<hr> -->
 
-<new-course-form></new-course-form>
-<hr>
-<contact-form></contact-form>
-<hr>
+<!-- <posts></posts>
+<hr> -->
 
-<zippy title="Shipping Details">
+<!-- <new-course-form></new-course-form>
+<hr> -->
+
+<!-- <contact-form></contact-form>
+<hr> -->
+
+<!-- <zippy title="Shipping Details">
   <h5>Shipping Details Content</h5>
   <p>Qwer asdf</p>
 </zippy>
-<hr>
+<hr> -->
 
 <!-- <input type="text" appInputFormat [format]="'uppercase'"> -->
 <!-- As we have only 1 input we can simplify it: -->
 
-<input type="text" [appInputFormat]="'uppercase'">
+<!-- <input type="text" [appInputFormat]="'uppercase'">
+<hr> -->
 
-<hr>
-<p>
+
   <!-- Save Traversal Operator - assignee object in null so it's ignored -->
+<!-- <p>
   {{ task.assignee?.name }} 
-</p>
+</p> -->
 
 <!-- <button class="btn"
   [style.backgroundColor]="canSave ? 'blue': 'gray'"
@@ -39,7 +43,7 @@ SAVE
 
 <!-- is the same as:  -->
 
-<button class="btn"
+<!-- <button class="btn"
   [ngStyle]="{
     'backgroundColor': canSave ? 'blue': 'gray',
     'color': canSave ? 'white': 'normal',
@@ -48,12 +52,11 @@ SAVE
 >
 SAVE
 </button>
+<hr> -->
 
-<hr>
+<!-- <courses2></courses2> -->
 
-<courses2></courses2>
-
-<ul class="nav nav-pills">
+<!-- <ul class="nav nav-pills">
   <li class="nav-item">
     <a class="nav-link" href="#"
     [class.active]="viewMode == 'map'"
@@ -64,32 +67,31 @@ SAVE
     [class.active]="viewMode == 'list'"
     (click)="viewMode = 'list'">List View</a>
   </li>
-</ul>
+</ul> -->
 
-<div [ngSwitch]="viewMode">
+<!-- <div [ngSwitch]="viewMode">
   <div *ngSwitchCase="'map'">Map View Content</div>
   <div *ngSwitchCase="'list'">List View Content</div>
   <div *ngSwitchDefault>Otherwise</div>
 </div>
+<hr> -->
 
-<hr/>
+<!-- <like [likesCount]="tweet.likesCount" [isActive]="tweet.isLiked">
+</like> -->
 
-<like [likesCount]="tweet.likesCount" [isActive]="tweet.isLiked">
-</like>
-
-<app-panel>
+<!-- <app-panel>
   <ng-container class="header">Heading</ng-container>
   <ng-container class="body">
     <h2>Body</h2>
     <p>Some content here...</p>
   </ng-container>
 </app-panel>
-<hr/>
+<hr> -->
 
-<input type="text" [(ngModel)]="inputText" />
-<br> {{ inputText | titleCase}}
+<!-- <input type="text" [(ngModel)]="inputText" />
+<br> {{ inputText | titleCase}} -->
 
-<favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite>
+<!-- <favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite> -->
 
-<courses></courses>
-<authors></authors>
+<!-- <courses></courses>
+<authors></authors> -->

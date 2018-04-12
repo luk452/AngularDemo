@@ -8,6 +8,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule, MatButtonModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { CourseComponent } from './course/course.component';
@@ -24,6 +26,7 @@ import { NewCourseFormComponent } from './new-course-form/new-course-form.compon
 import { PostsComponent } from './posts/posts.component';
 import { AppErrorHandler } from './common/app-error-handler';
 import { NewCourseForm2Component } from './new-course-form-2/new-course-form-2.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 @NgModule({
@@ -44,13 +47,16 @@ import { NewCourseForm2Component } from './new-course-form-2/new-course-form-2.c
     NewCourseFormComponent,
     PostsComponent,
     SignupFormComponent,
-    NewCourseForm2Component
+    NewCourseForm2Component,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatInputModule, MatButtonModule
   ],
   providers: [
     CoursesService,
